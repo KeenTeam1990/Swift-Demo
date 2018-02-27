@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kp6-5f-JXf">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Contacts-->
+        <scene sceneID="yFT-HB-ir3">
+            <objects>
+                <navigationController id="73k-1a-LQh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Contacts" image="tab_base" id="mHz-7k-0ao"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z2Y-j2-lBP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lwo-l0-fL9" kind="relationship" relationship="rootViewController" id="rvD-vM-v3h"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pup-xc-Gos" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1299.5" y="385.5"/>
+        </scene>
+        <!--通讯录-->
+        <scene sceneID="FAO-vf-QFC">
+            <objects>
+                <viewController id="lwo-l0-fL9" customClass="YJContactVC" customModule="Contact" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S2z-m1-tbR"/>
+                        <viewControllerLayoutGuide type="bottom" id="1ft-sn-LDd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tdy-qV-H9f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gXm-5U-qaR">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="lwo-l0-fL9" id="oWz-4Y-Q8g"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="4fC-Vc-jZ1">
+                                <rect key="frame" x="0.0" y="108" width="375" height="510"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="lwo-l0-fL9" id="GbA-rv-Ybp"/>
+                                    <outlet property="delegate" destination="lwo-l0-fL9" id="VXl-l5-YY9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gXm-5U-qaR" secondAttribute="trailing" id="Aey-uq-PdJ"/>
+                            <constraint firstItem="4fC-Vc-jZ1" firstAttribute="top" secondItem="gXm-5U-qaR" secondAttribute="bottom" id="JIa-5B-s33"/>
+                            <constraint firstItem="4fC-Vc-jZ1" firstAttribute="leading" secondItem="Tdy-qV-H9f" secondAttribute="leading" id="ZjJ-E6-Md9"/>
+                            <constraint firstAttribute="trailing" secondItem="4fC-Vc-jZ1" secondAttribute="trailing" id="bPP-U6-L1v"/>
+                            <constraint firstItem="gXm-5U-qaR" firstAttribute="top" secondItem="S2z-m1-tbR" secondAttribute="bottom" id="edx-O5-cAj"/>
+                            <constraint firstItem="1ft-sn-LDd" firstAttribute="top" secondItem="4fC-Vc-jZ1" secondAttribute="bottom" id="jef-1i-zoN"/>
+                            <constraint firstItem="gXm-5U-qaR" firstAttribute="leading" secondItem="Tdy-qV-H9f" secondAttribute="leading" id="pfD-Yn-pjT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="通讯录" id="38D-hJ-A9J">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TH7-XG-XA5">
+                            <connections>
+                                <action selector="onClickAdd:" destination="lwo-l0-fL9" id="4Jq-LV-bqD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="Ue6-xH-ido" id="WFK-G5-75O"/>
+                        <outlet property="tableView" destination="4fC-Vc-jZ1" id="qBw-2c-PqA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UcR-sJ-bUR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Ue6-xH-ido">
+                    <connections>
+                        <outlet property="delegate" destination="lwo-l0-fL9" id="7jK-cy-QM5"/>
+                        <outlet property="searchBar" destination="gXm-5U-qaR" id="2MH-3N-AfU"/>
+                        <outlet property="searchContentsController" destination="lwo-l0-fL9" id="Byf-y8-d1I"/>
+                        <outlet property="searchResultsDataSource" destination="lwo-l0-fL9" id="VBp-iv-xdy"/>
+                        <outlet property="searchResultsDelegate" destination="lwo-l0-fL9" id="Nv2-Rs-Sdq"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="-551" y="385"/>
+        </scene>
+        <!--ContactsUI-->
+        <scene sceneID="tRZ-bk-vis">
+            <objects>
+                <navigationController id="KDt-Ku-pUP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="ContactsUI" image="tab_base" id="38W-ew-5aW"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lsl-rZ-3Kf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vnv-VU-Xf7" kind="relationship" relationship="rootViewController" id="hkg-Gc-t0G"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tEI-T0-ChX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1299.5" y="1162.5"/>
+        </scene>
+        <!--ContactsUI-->
+        <scene sceneID="2OQ-8j-FTj">
+            <objects>
+                <viewController id="vnv-VU-Xf7" customClass="YJContactsUIVC" customModule="Contact" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bzw-ya-ZOx"/>
+                        <viewControllerLayoutGuide type="bottom" id="CJR-CP-TvN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RF5-3f-c1G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vz-R3-4N1">
+                                <rect key="frame" x="78" y="144" width="219" height="30"/>
+                                <state key="normal" title="CNContactPickerViewController"/>
+                                <connections>
+                                    <action selector="onClickCNContactPickerViewController:" destination="vnv-VU-Xf7" eventType="touchUpInside" id="xT2-tg-aR6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5c-1P-1bi">
+                                <rect key="frame" x="99" y="204" width="177" height="30"/>
+                                <state key="normal" title="CNContactViewController"/>
+                                <connections>
+                                    <action selector="onClickCNContactViewController:" destination="vnv-VU-Xf7" eventType="touchUpInside" id="X00-Pt-tWb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="b5c-1P-1bi" firstAttribute="centerX" secondItem="RF5-3f-c1G" secondAttribute="centerX" id="1ED-u0-6uM"/>
+                            <constraint firstItem="b5c-1P-1bi" firstAttribute="top" secondItem="9Vz-R3-4N1" secondAttribute="bottom" constant="30" id="3fn-0J-RDT"/>
+                            <constraint firstItem="9Vz-R3-4N1" firstAttribute="top" secondItem="bzw-ya-ZOx" secondAttribute="bottom" constant="80" id="C2c-ES-3I1"/>
+                            <constraint firstItem="9Vz-R3-4N1" firstAttribute="centerX" secondItem="RF5-3f-c1G" secondAttribute="centerX" id="sHk-gj-P52"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="ContactsUI" id="E6L-tH-jJX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dRj-ju-vAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-566" y="1149"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="une-A6-qQP">
+            <objects>
+                <tabBarController id="kp6-5f-JXf" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="YNF-6z-LM2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="73k-1a-LQh" kind="relationship" relationship="viewControllers" id="eOB-Tu-0HN"/>
+                        <segue destination="KDt-Ku-pUP" kind="relationship" relationship="viewControllers" id="xas-Ui-Aez"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8tH-de-4sQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2346" y="836"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tab_base" width="36" height="36"/>
+    </resources>
+</document>
